@@ -47,7 +47,7 @@ __global__ void bwd3dKernel (
 };
 
 template <typename scalar_t>
-std::vector<torch::Tensor> fwd_1D (
+static torch::Tensor Conv1D::forward (
     torch::Tensor& input,
     torch::Tensor& weight,
     torch::Tensor& bias,
@@ -56,7 +56,7 @@ std::vector<torch::Tensor> fwd_1D (
 };
 
 template <typename scalar_t>
-std::vector<torch::Tensor> bwd_1D (
+static torch::autograd::variable_list Conv1D::backward (
     torch::Tensor& input,
     torch::Tensor& weight,
     torch::Tensor& bias,
@@ -65,7 +65,7 @@ std::vector<torch::Tensor> bwd_1D (
 };
 
 template <typename scalar_t>
-std::vector<torch::Tensor> fwd_2D (
+static torch::Tensor Conv2D::forward (
     torch::Tensor& input,
     torch::Tensor& weight,
     torch::Tensor& bias,
@@ -74,7 +74,7 @@ std::vector<torch::Tensor> fwd_2D (
 };
 
 template <typename scalar_t>
-std::vector<torch::Tensor> bwd_2D (
+static torch::autograd::variable_list Conv2D::backward (
     torch::Tensor& input,
     torch::Tensor& weight,
     torch::Tensor& bias,
@@ -83,7 +83,7 @@ std::vector<torch::Tensor> bwd_2D (
 };
 
 template <typename scalar_t>
-std::vector<torch::Tensor> fwd_3D (
+static torch::Tensor Conv3D::forward (
     torch::Tensor& input,
     torch::Tensor& weight,
     torch::Tensor& bias,
@@ -92,7 +92,7 @@ std::vector<torch::Tensor> fwd_3D (
 };
 
 template <typename scalar_t>
-std::vector<torch::Tensor> bwd_3D (
+static torch::autograd::variable_list Conv3D::backward (
     torch::Tensor& input,
     torch::Tensor& weight,
     torch::Tensor& bias,

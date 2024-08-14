@@ -6,7 +6,7 @@ setup(
     ext_modules=[
         CUDAExtension(
             name='fusedconv',
-            sources=['fusedConv.cu'],
+            sources=['src/fusedConv.cu', 'bindings/fusedConvWrapper.cpp'],
             include_dirs=['include']
         )
     ],

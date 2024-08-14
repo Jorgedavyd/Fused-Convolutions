@@ -1,17 +1,26 @@
 #pragma once
+#include <vector>
 #ifndef FUSEDCONV_CUH
 #define FUSEDCONV_CUH
 
 #include <torch/extension.h>
 
-torch::Tensor fwd_1D (torch::Tensor input, torch::Tensor weight);
-torch::Tensor bwd_1D(torch::Tensor input, torch::Tensor weight);
+class Conv1D : torch::autograd::Function<Conv1D> {
+public:
+    static torch::Tensor forward;
+    static torch::autograd::variable_list backward;
+};
 
-torch::Tensor fwd_2D (torch::Tensor input, torch::Tensor weight);
-torch::Tensor bwd_2D(torch::Tensor input, torch::Tensor weight);
+class Conv2D : torch::autograd::Function<Conv2D> {
+public:
+    static torch::Tensor forward;
+    static torch::autograd::variable_list backward;
+};
 
-torch::Tensor fwd_3D (torch::Tensor input, torch::Tensor weight);
-torch::Tensor bwd_3D(torch::Tensor input, torch::Tensor weight);
-
+class Conv3D : torch::autograd::Function<Conv3D> {
+public:
+    static torch::Tensor forward;
+    static torch::autograd::variable_list backward;
+}
 
 #endif //FUSEDCONV_CUH
