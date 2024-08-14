@@ -1,29 +1,34 @@
 from torch import nn, Tensor
 from torch.autograd import Function
-from dataclasses import dataclass
-from .typing import singleton, duplet, triplet
-from .padding import *
+from .typing import *
+import fusedconv
 
 class fusedConv1d(Function):
     ## All of them in the complex plane
-    def forward(self, X: Tensor, W: Tensor) -> Tensor:
-        return ...
-    def backward(self, X: Tensor, W: Tensor, out: Tensor) -> Tensor:
-        return ...
+    @staticmethod
+    def forward(X: Tensor, W: Tensor) -> Tensor:
+        return fusedconv.fwd_1D(X, W)
+    @staticmethod
+    def backward(X: Tensor, W: Tensor, out: Tensor) -> Tensor:
+        return fusedconv.bwd_1D(X, W)
 
 class fusedConv2d(Function):
     ## All of them in the complex plane
-    def forward(self, X: Tensor, W: Tensor) -> Tensor:
-        return ...
-    def backward(self, X: Tensor, W: Tensor, out: Tensor) -> Tensor:
-        return ...
+    @staticmethod
+    def forward(X: Tensor, W: Tensor) -> Tensor:
+        return fusedconv.fwd_2D(X, W)
+    @staticmethod
+    def backward(X: Tensor, W: Tensor, out: Tensor) -> Tensor:
+        return fusedconv.bwd_2D(X, W)
 
 class fusedConv3d(Function):
     ## All of them in the complex plane
-    def forward(self, X: Tensor, W: Tensor) -> Tensor:
-        return ...
-    def backward(self, X: Tensor, W: Tensor, out: Tensor) -> Tensor:
-        return ...
+    @staticmethod
+    def forward(X: Tensor, W: Tensor) -> Tensor:
+        return fusedconv.fwd_3D(X, W)
+    @staticmethod
+    def backward(X: Tensor, W: Tensor, out: Tensor) -> Tensor:
+        return fusedconv.bwd_3D(X, W)
 
 class FusedConvolution(nn.Module):
     def __init__(self, args: FusedArgs, convMethod: Function) -> None:
@@ -35,7 +40,7 @@ class FusedConvolution(nn.Module):
     def init_weights(self) -> None:
 
     def forward(self, input: Tensor) -> Tensor:
-        return self.convMethod(
+        return self.convMethod.apply(
             input,
             self.weight,
             self.bias,

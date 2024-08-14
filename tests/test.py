@@ -4,6 +4,7 @@ from ..python.typing import FusedArgs
 import yaml
 
 def createArgs(data: Dict) -> FusedArgs:
+    return data
 
 class testConfig:
     path: Callable[[int], str] = lambda x: f'./tests/config{x}.yml'
