@@ -1,8 +1,8 @@
 #pragma once
-#ifndef FUSEDCONV_CUH
-#define FUSEDCONV_CUH
-#include <vector>
+#ifndef FFT_CUH
+#define FFT_CUH
 #include <torch/extension.h>
+#include <vector>
 
 class Conv1D : torch::autograd::Function<Conv1D> {
 public:
@@ -22,4 +22,4 @@ public:
     static torch::autograd::variable_list backward;
 }
 
-#endif //FUSEDCONV_CUH
+#endif //FFT_CUH

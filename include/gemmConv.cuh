@@ -1,6 +1,6 @@
 #pragma once
-#ifndef FUSEDCONV_CUH
-#define FUSEDCONV_CUH
+#ifndef GEMMCONV_CUH
+#define GEMMCONV_CUH
 #include <vector>
 #include <torch/extension.h>
 
@@ -22,4 +22,4 @@ public:
     static torch::autograd::variable_list backward;
 }
 
-#endif //FUSEDCONV_CUH
+#endif //GEMMCONV_CUH

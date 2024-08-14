@@ -9,6 +9,8 @@ find_package(Torch REQUIRED)
 include_directories(${Python3_INCLUDE_DIRS} ${TORCH_INCLUDE_DIRS} include)
 
 add_library(fusedconv SHARED src/fusedConv.cu bindings/fusedConvWrapper.cpp)
+add_library(fftconv SHARED src/fftConv.cu bindings/fftConvWrapper.cpp)
+add_library(gemmconv SHARED src/gemmConv.cu bindings/gemmConvWrapper.cpp)
 target_link_libraries(fusedConv PRIVATE pybind::module ${TORCH_LIBRARIES})
 
 set_target_properties(fusedConv PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}" SUFFIX "${PYTHON_MODULE_EXTENSION}")
