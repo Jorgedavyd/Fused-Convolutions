@@ -3,12 +3,18 @@
 #include <cuda_runtime.h>
 #include <vector>
 #include "fftConv.cuh"
+#include "basicUtils.cpp"
 
-template <typename scalar_t>
+template <typename index_t = uint32_t, typename >
 __global__ void fwd1dKernel (
-    torch::PackedTensorAccessor32<scalar_t,3,torch::RestrictPtrTraits> input,
-    torch::PackedTensorAccessor32<scalar_t,3,torch::RestrictPtrTraits> weight,
+    torch::PackedTensorAccessor32<index_t,3,torch::RestrictPtrTraits> input,
+    torch::PackedTensorAccessor32<index_t,3,torch::RestrictPtrTraits> weight,
+    torch::PackedTensorAccessor32<index_t,3,torch::RestrictPtrTraits> bias,
+    const Kernel& kernel_size,
+    const Stride& stride,
+    const Padding& padding,
 ) {
+
 };
 
 template <typename scalar_t>

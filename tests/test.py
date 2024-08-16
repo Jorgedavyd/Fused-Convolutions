@@ -2,6 +2,8 @@ from fusedconv import FusedCovn1D, FusedCovn2D, FusedCovn3D
 from typing import Callable, Tuple
 from ..python.typing import FusedArgs
 from fusedconv import *
+from fftconv import *
+from gemmconv import *
 import yaml
 from torch import nn, Tensor
 from torch.autograd.profiler import profiler
