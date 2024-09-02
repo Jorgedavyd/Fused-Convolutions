@@ -1,6 +1,5 @@
 from torch import nn, Tensor
 from fftconv import *
-import torch
 
 class FFTConvolution(nn.Module):
     def __init__(self, kernel_size, stride, padding, convMethod) -> None:

@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <cuda_runtime.h>
 #include <cuda.h>
+#include <functional>
 #include "ptrTraits.cpp"
 
 // Accessor for fused convolution
